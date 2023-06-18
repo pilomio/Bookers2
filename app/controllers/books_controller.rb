@@ -81,9 +81,10 @@ end
     @book = Book.find(params[:id])
     unless current_user == @book.user
       flash[:error] = "You are not authorized to perform this action."
-      redirect_to root_path
+      redirect_to books_path
     end
    end
-
+   
+    
 end
 

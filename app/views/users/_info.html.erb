@@ -1,0 +1,12 @@
+<div class="text-left">
+ <h2>User Info</h2>
+    <%= image_tag user.get_profile_image(100, 100) %>
+    <p>Name:<%= user.name %></p>
+    <p>Introduction: <%= user.introduction %></p>
+  <li class="nav-item　text-center">
+     
+     <p><%= link_to "プロフィール編集", edit_user_path(user), class: "fas fa-user-cog" %></p>
+
+    </div>
+    
+    
