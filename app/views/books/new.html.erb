@@ -1,0 +1,80 @@
+<div>
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>error prohibited this obj from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+     
+<div class="text-left">
+  <h2>User Info</h2>
+  <% if user_signed_in? %>
+    <%= image_tag current_user.get_profile_image(100, 100) %>
+    <p>Name:<%= current_user.name %></p>
+    <p>Introduction: <%= current_user.introduction %></p>
+  <% else %>
+    <p>Please sign in to view user info.</p>
+  <% end %>
+   
+     <p><%= link_to "プロフィール編集", edit_user_path(current_user.id), class: "fas fa-user-cog" %></p>
+</div>
+
+</div>
+
+
+<div class="text-left">
+  <h2>New book</h2>
+  <%= form_with model: @book do |f| %>
+      <p>Title</p>
+      <%= f.text_field :title, name: 'book[title]' %>
+    <p>Opinion</p>
+      <%= f.text_area :body, name: 'book[body]' %>
+    <%= f.submit 'Create Book' %>
+     <% end %>
+  </div>
+    </div>
+      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+       <div class="col-md-8 offset-md-1">
+
+<div class="text-right">
+ <h2>Books</h2>
+  <table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+ <tbody> <% @books.each do |book| %></tbody>
+ <div>
+  <th><%= image_tag book.get_image %></th>
+  <th>Title : <%= link_to book.title, user_path(book.user) %></th>
+  <th>Opinion：<%= book.body %></th>
+   <th colspan="3"></th>
+</div>
+</table>
+    </div>
+<% end %>
+</div>
+
+ </div>
+<div class="col-md-8 offset-md-1">
+
+    </div>
+  </div>
+</div>
+
+
+
