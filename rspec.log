@@ -1,4 +1,14 @@
 
+BookCommentモデルのテスト
+  バリデーションのテスト
+    commentカラム
+[32m      空欄でないこと[0m
+  アソシエーションのテスト
+    Bookモデルとの関係
+[32m      N:1となっている[0m
+    Userモデルとの関係
+[32m      N:1となっている[0m
+
 Bookモデルのテスト
   バリデーションのテスト
     titleカラム
@@ -8,6 +18,19 @@ Bookモデルのテスト
 [32m      200文字以下であること: 200文字は〇[0m
 [32m      200文字以下であること: 201文字は×[0m
   アソシエーションのテスト
+    Userモデルとの関係
+[32m      N:1となっている[0m
+    BookCommentモデルとの関係
+[32m      1:Nとなっている[0m
+    Favoriteモデルとの関係
+[32m      1:Nとなっている[0m
+
+Favoriteモデルのテスト
+  バリデーションのテスト
+[32m    ユーザーは一つの投稿に一つしかいいねできない[0m
+  アソシエーションのテスト
+    Bookモデルとの関係
+[32m      N:1となっている[0m
     Userモデルとの関係
 [32m      N:1となっている[0m
 
@@ -26,31 +49,34 @@ Userモデルのテスト
   アソシエーションのテスト
     Bookモデルとの関係
 [32m      1:Nとなっている[0m
+    BookCommentモデルとの関係
+[32m      1:Nとなっている[0m
+    Favoriteモデルとの関係
+[32m      1:Nとなっている[0m
 
 [STEP1] ユーザログイン前のテスト
   トップ画面のテスト
     表示内容の確認
 [32m      URLが正しい[0m
-[32m      Log inリンクが表示される: 青色のボタンの表示が「Log in」である[0m
+[32m      Log inリンクが表示される: 左上から5番目のリンクが「Log in」である[0m
 [32m      Log inリンクの内容が正しい[0m
-[32m      Sign upリンクが表示される: 緑色のボタンの表示が「Sign up」である[0m
-[32m      Sign upリンクの内容が正しい[0m
+[32m      Sign Upリンクが表示される: 左上から6番目のリンクが「Sign Up」である[0m
+[32m      Sign Upリンクの内容が正しい[0m
   アバウト画面のテスト
     表示内容の確認
 [32m      URLが正しい[0m
   ヘッダーのテスト: ログインしていない場合
     表示内容の確認
-[32m      Bookersリンクが表示される: 左上から1番目のリンクが「Bookers」である[0m
-[32m      Homeリンクが表示される: 左上から2番目のリンクが「Home」である[0m
-[32m      Aboutリンクが表示される: 左上から3番目のリンクが「About」である[0m
-[32m      Sign upリンクが表示される: 左上から4番目のリンクが「Sign up」である[0m
-[32m      Log inリンクが表示される: 左上から5番目のリンクが「Log in」である[0m
+[32m      タイトルが表示される[0m
+[32m      Homeリンクが表示される: 左上から1番目のリンクが「Home」である[0m
+[32m      Aboutリンクが表示される: 左上から2番目のリンクが「About」である[0m
+[32m      sign upリンクが表示される: 左上から3番目のリンクが「sign up」である[0m
+[31m      loginリンクが表示される: 左上から4番目のリンクが「login」である (FAILED - 1)[0m
     リンクの内容を確認
-[32m      Bookersを押すと、トップ画面に遷移する[0m
 [32m      Homeを押すと、トップ画面に遷移する[0m
 [32m      Aboutを押すと、アバウト画面に遷移する[0m
-[32m      Sign upを押すと、新規登録画面に遷移する[0m
-[32m      Log inを押すと、ログイン画面に遷移する[0m
+[31m      sign upを押すと、新規登録画面に遷移する (FAILED - 2)[0m
+[31m      loginを押すと、ログイン画面に遷移する (FAILED - 3)[0m
   ユーザ新規登録のテスト
     表示内容の確認
 [32m      URLが正しい[0m
@@ -69,7 +95,7 @@ Userモデルのテスト
 [32m      「Log in」と表示される[0m
 [32m      nameフォームが表示される[0m
 [32m      passwordフォームが表示される[0m
-[32m      Log inボタンが表示される[0m
+[32m      Sign upボタンが表示される[0m
 [32m      emailフォームは表示されない[0m
     ログイン成功のテスト
 [32m      ログイン後のリダイレクト先が、ログインしたユーザの詳細画面になっている[0m
@@ -77,11 +103,11 @@ Userモデルのテスト
 [32m      ログインに失敗し、ログイン画面にリダイレクトされる[0m
   ヘッダーのテスト: ログインしている場合
     ヘッダーの表示を確認
-[32m      Bookersリンクが表示される: 左上から1番目のリンクが「Bookers」である[0m
-[32m      Homeリンクが表示される: 左上から2番目のリンクが「Home」である[0m
-[32m      Usersリンクが表示される: 左上から3番目のリンクが「Users」である[0m
-[32m      Booksリンクが表示される: 左上から4番目のリンクが「Books」である[0m
-[32m      Log outリンクが表示される: 左上から5番目のリンクが「Log out」である[0m
+[32m      タイトルが表示される[0m
+[32m      Homeリンクが表示される: 左上から1番目のリンクが「Home」である[0m
+[32m      Usersリンクが表示される: 左上から2番目のリンクが「Users」である[0m
+[32m      Booksリンクが表示される: 左上から3番目のリンクが「Books」である[0m
+[31m      log outリンクが表示される: 左上から4番目のリンクが「logout」である (FAILED - 4)[0m
   ユーザログアウトのテスト
     ログアウト機能のテスト
 [32m      正しくログアウトできている: ログアウト後のリダイレクト先においてAbout画面へのリンクが存在する[0m
@@ -105,8 +131,8 @@ Userモデルのテスト
 [32m      「New book」と表示される[0m
 [32m      titleフォームが表示される[0m
 [32m      titleフォームに値が入っていない[0m
-[32m      bodyフォームが表示される[0m
-[32m      bodyフォームに値が入っていない[0m
+[32m      opinionフォームが表示される[0m
+[32m      opinionフォームに値が入っていない[0m
 [32m      Create Bookボタンが表示される[0m
     投稿成功のテスト
 [32m      自分の新しい投稿が正しく保存される[0m
@@ -117,7 +143,7 @@ Userモデルのテスト
 [32m      「Book detail」と表示される[0m
 [32m      ユーザ画像・名前のリンク先が正しい[0m
 [32m      投稿のtitleが表示される[0m
-[32m      投稿のbodyが表示される[0m
+[32m      投稿のopinionが表示される[0m
 [32m      投稿の編集リンクが表示される[0m
 [32m      投稿の削除リンクが表示される[0m
     サイドバーの確認
@@ -126,15 +152,14 @@ Userモデルのテスト
 [32m      「New book」と表示される[0m
 [32m      titleフォームが表示される[0m
 [32m      titleフォームに値が入っていない[0m
-[32m      bodyフォームが表示される[0m
-[32m      bodyフォームに値が入っていない[0m
+[32m      opinionフォームが表示される[0m
+[32m      opinionフォームに値が入っていない[0m
 [32m      Create Bookボタンが表示される[0m
     投稿成功のテスト
-[31m      自分の新しい投稿が正しく保存される (FAILED - 1)[0m
+[32m      自分の新しい投稿が正しく保存される[0m
     編集リンクのテスト
 [32m      編集画面に遷移する[0m
     削除リンクのテスト
-[32m      application.html.erbにjavascript_pack_tagを含んでいる[0m
 [32m      正しく削除される[0m
 [32m      リダイレクト先が、投稿一覧画面になっている[0m
   自分の投稿編集画面のテスト
@@ -142,7 +167,7 @@ Userモデルのテスト
 [32m      URLが正しい[0m
 [32m      「Editing Book」と表示される[0m
 [32m      title編集フォームが表示される[0m
-[32m      body編集フォームが表示される[0m
+[32m      opinion編集フォームが表示される[0m
 [32m      Update Bookボタンが表示される[0m
 [32m      Showリンクが表示される[0m
 [32m      Backリンクが表示される[0m
@@ -153,7 +178,7 @@ Userモデルのテスト
   ユーザ一覧画面のテスト
     表示内容の確認
 [32m      URLが正しい[0m
-[31m      自分と他人の画像が表示される: fallbackの画像がサイドバーの1つ＋一覧(2人)の2つの計3つ存在する (FAILED - 2)[0m
+[32m      自分と他人の画像が表示される: fallbackの画像がサイドバーの1つ＋一覧(2人)の2つの計3つ存在する[0m
 [32m      自分と他人の名前がそれぞれ表示される[0m
 [32m      自分と他人のshowリンクがそれぞれ表示される[0m
     サイドバーの確認
@@ -162,15 +187,15 @@ Userモデルのテスト
 [32m      「New book」と表示される[0m
 [32m      titleフォームが表示される[0m
 [32m      titleフォームに値が入っていない[0m
-[32m      bodyフォームが表示される[0m
-[32m      bodyフォームに値が入っていない[0m
+[32m      opinionフォームが表示される[0m
+[32m      opinionフォームに値が入っていない[0m
 [32m      Create Bookボタンが表示される[0m
   自分のユーザ詳細画面のテスト
     表示の確認
 [32m      URLが正しい[0m
 [32m      投稿一覧のユーザ画像のリンク先が正しい[0m
 [32m      投稿一覧に自分の投稿のtitleが表示され、リンクが正しい[0m
-[32m      投稿一覧に自分の投稿のbodyが表示される[0m
+[32m      投稿一覧に自分の投稿のopinionが表示される[0m
 [32m      他人の投稿は表示されない[0m
     サイドバーの確認
 [32m      自分の名前と紹介文が表示される[0m
@@ -178,8 +203,8 @@ Userモデルのテスト
 [32m      「New book」と表示される[0m
 [32m      titleフォームが表示される[0m
 [32m      titleフォームに値が入っていない[0m
-[32m      bodyフォームが表示される[0m
-[32m      bodyフォームに値が入っていない[0m
+[32m      opinionフォームが表示される[0m
+[32m      opinionフォームに値が入っていない[0m
 [32m      Create Bookボタンが表示される[0m
   自分のユーザ情報編集画面のテスト
     表示の確認
@@ -234,15 +259,15 @@ Userモデルのテスト
 [32m        ユーザ画像・名前のリンク先が正しい[0m
 [32m        投稿のtitleが表示される[0m
 [32m        投稿のopinionが表示される[0m
-[31m        投稿の編集リンクが表示されない (FAILED - 3)[0m
-[31m        投稿の削除リンクが表示されない (FAILED - 4)[0m
+[32m        投稿の編集リンクが表示されない[0m
+[32m        投稿の削除リンクが表示されない[0m
       サイドバーの確認
 [32m        他人の名前と紹介文が表示される[0m
 [32m        他人のユーザ編集画面へのリンクが存在する[0m
-[31m        自分の名前と紹介文は表示されない (FAILED - 5)[0m
+[32m        自分の名前と紹介文は表示されない[0m
 [32m        自分のユーザ編集画面へのリンクは存在しない[0m
     他人の投稿編集画面
-[31m      遷移できず、投稿一覧画面にリダイレクトされる (FAILED - 6)[0m
+[32m      遷移できず、投稿一覧画面にリダイレクトされる[0m
     他人のユーザ詳細画面のテスト
       表示の確認
 [32m        URLが正しい[0m
@@ -256,12 +281,12 @@ Userモデルのテスト
 [32m        自分の名前と紹介文は表示されない[0m
 [32m        自分のユーザ編集画面へのリンクは存在しない[0m
     他人のユーザ情報編集画面
-[31m      遷移できず、自分のユーザ詳細画面にリダイレクトされる (FAILED - 7)[0m
+[32m      遷移できず、自分のユーザ詳細画面にリダイレクトされる[0m
   グリッドシステムのテスト: container, row, col-md-〇を正しく使えている
 [32m    ユーザ一覧画面[0m
 [32m    ユーザ詳細画面[0m
 [32m    投稿一覧画面[0m
-[31m    投稿詳細画面 (FAILED - 8)[0m
+[32m    投稿詳細画面[0m
   アイコンのテスト
     トップ画面
 [32m      本のアイコンが表示される[0m
@@ -270,117 +295,160 @@ Userモデルのテスト
     ヘッダー: ログインしていない場合
 [32m      Homeリンクのアイコンが表示される[0m
 [32m      Aboutリンクのアイコンが表示される[0m
-[32m      Sign upリンクのアイコンが表示される[0m
-[32m      Log inリンクのアイコンが表示される[0m
+[32m      sign upリンクのアイコンが表示される[0m
+[32m      loginリンクのアイコンが表示される[0m
     ヘッダー: ログインしている場合
 [32m      Homeリンクのアイコンが表示される[0m
 [32m      Usersリンクのアイコンが表示される[0m
 [32m      Booksリンクのアイコンが表示される[0m
-[32m      Log outリンクのアイコンが表示される[0m
+[32m      log outリンクのアイコンが表示される[0m
     サイドバー
 [32m      ユーザ一覧画面でレンチアイコンが表示される[0m
 [32m      ユーザ詳細画面でレンチアイコンが表示される[0m
 [32m      投稿一覧画面でレンチアイコンが表示される[0m
 [32m      投稿詳細画面でレンチアイコンが表示される[0m
 
+[STEP4] いいねとコメントのテスト
+  投稿一覧画面のテスト[課題4追加分]
+    表示の確認
+[32m      いいねボタンのハートアイコンが表示される[0m
+[32m      いいねボタンが表示される[0m
+[32m      コメント数が表示される[0m
+    いいね作成機能のテスト
+[32m      自分のいいねが正しく保存される[0m
+[31m      リダイレクト先が投稿一覧画面になっている (FAILED - 5)[0m
+[32m      リダイレクト先でいいね数が正しく更新されている[0m
+    いいね削除機能のテスト
+[32m      自分のいいねが正しく削除される[0m
+[31m      リダイレクト先が投稿一覧画面になっている (FAILED - 6)[0m
+[32m      リダイレクト先でいいね数が正しく更新されている[0m
+  自分の投稿詳細画面のテスト[課題4追加分]
+    表示の確認
+[32m      いいねボタンのハートアイコンが表示される[0m
+[32m      いいねボタンが表示される[0m
+[32m      コメント数が表示される[0m
+[32m      コメント一覧でコメント投稿者の画像が表示される: fallbackの画像がサイドバーの1つ＋Book detail直下の1つ＋コメント一覧(2人)の2つの計4つ存在する[0m
+[32m      コメント一覧でコメント投稿者の名前が表示される[0m
+[32m      コメント一覧でコメントの内容が表示される[0m
+[32m      自分が投稿したコメントの削除ボタンが表示される[0m
+[32m      他人が投稿したコメントの削除ボタンは表示されない[0m
+[32m      コメント投稿フォームが表示される[0m
+[32m      送信ボタンが表示される[0m
+    いいね機能のテスト
+[32m      自分のいいねが正しく保存される[0m
+[32m      リダイレクト先が、いいねをした投稿詳細画面になっている[0m
+[32m      リダイレクト先でいいね数が正しく更新されている[0m
+    コメント追加機能のテスト
+[32m      自分のコメントが正しく保存される[0m
+[32m      リダイレクト先が、コメントをした投稿詳細画面になっている[0m
+[32m      リダイレクト先でコメント数が正しく更新されている[0m
+[32m      リダイレクト先で新しいコメントが表示されている[0m
+    コメント削除機能のテスト
+[32m      自分のコメントが正しく削除される[0m
+[32m      リダイレクト先が、コメントをしていた投稿詳細画面になっている[0m
+[32m      リダイレクト先でコメント数が正しく更新されている[0m
+[32m      リダイレクト先で削除したコメントは表示されない[0m
+  自分のユーザ詳細画面のテスト[課題4追加分]
+    表示の確認
+[32m      いいねボタンのハートアイコンが表示される[0m
+[32m      いいねボタンが表示される[0m
+[32m      コメント数が表示される[0m
+    いいね作成機能のテスト
+[32m      自分のいいねが正しく保存される[0m
+[31m      リダイレクト先が自分のユーザ詳細画面になっている (FAILED - 7)[0m
+[32m      リダイレクト先でいいね数が正しく更新されている[0m
+
 Failures:
 
-  1) [STEP2] ユーザログイン後のテスト 自分の投稿詳細画面のテスト 投稿成功のテスト 自分の新しい投稿が正しく保存される
-     [31mFailure/Error: expect { click_button 'Create Book' }.to change(user.books, :count).by(1)[0m
+  1) [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 表示内容の確認 loginリンクが表示される: 左上から4番目のリンクが「login」である
+     [31mFailure/Error: expect(login_link).to match(/login/i)[0m
      [31m[0m
-     [31mActionController::RoutingError:[0m
-     [31m  No route matches [PATCH] "/books.1"[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.7.3/lib/rails/rack/logger.rb:37:in `call_app'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.7.3/lib/rails/rack/logger.rb:26:in `block in call'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.7.3/lib/rails/rack/logger.rb:26:in `call'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.7/lib/rack/method_override.rb:24:in `call'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.7/lib/rack/runtime.rb:22:in `call'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.7/lib/rack/sendfile.rb:110:in `call'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.7.3/lib/rails/engine.rb:539:in `call'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.7/lib/rack/urlmap.rb:74:in `block in call'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.7/lib/rack/urlmap.rb:58:in `each'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.7/lib/rack/urlmap.rb:58:in `call'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.7/lib/rack/builder.rb:244:in `call'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.1.0/lib/rack/test.rb:360:in `process_request'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.1.0/lib/rack/test.rb:163:in `custom_request'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.1.0/lib/rack/test.rb:112:in `post'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/rack_test/browser.rb:80:in `process'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/rack_test/browser.rb:55:in `process_and_follow_redirects'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/rack_test/browser.rb:38:in `submit'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/rack_test/form.rb:57:in `submit'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/rack_test/node.rb:69:in `click'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/rack_test/node.rb:132:in `call'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/rack_test/node.rb:132:in `click'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/node/element.rb:172:in `block in click'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/node/element.rb:608:in `block in perform_click_action'[0m
+     [31m  expected "Log in" to match /login/i[0m
+     [31m  Diff:[0m[0m
+     [31m  [0m[34m@@ -1 +1 @@[0m
+     [31m  [0m[31m-/login/i[0m
+     [31m  [0m[32m+"Log in"[0m
+     [31m  [0m[0m
+     [36m# ./spec/system/01_before_login_spec.rb:67:in `block (4 levels) in <main>'[0m
+
+  2) [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 リンクの内容を確認 sign upを押すと、新規登録画面に遷移する
+     [31mFailure/Error: click_link signup_link[0m
+     [31m[0m
+     [31mCapybara::Ambiguous:[0m
+     [31m  Ambiguous match, found 2 elements matching visible link "Sign up"[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/node/finders.rb:310:in `block in synced_resolve'[0m
      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/node/base.rb:84:in `synchronize'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/node/element.rb:608:in `perform_click_action'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/node/element.rb:171:in `click'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/node/actions.rb:58:in `click_button'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/session.rb:773:in `click_button'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/node/finders.rb:301:in `synced_resolve'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/node/finders.rb:60:in `find'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/node/actions.rb:42:in `click_link'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/session.rb:773:in `click_link'[0m
      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/dsl.rb:52:in `call'[0m
-     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/dsl.rb:52:in `click_button'[0m
-     [36m# ./spec/system/02_after_login_spec.rb:172:in `block (5 levels) in <main>'[0m
-     [36m# ./spec/system/02_after_login_spec.rb:172:in `block (4 levels) in <main>'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/dsl.rb:52:in `click_link'[0m
+     [36m# ./spec/system/01_before_login_spec.rb:90:in `block (4 levels) in <main>'[0m
 
-  2) [STEP2] ユーザログイン後のテスト ユーザ一覧画面のテスト 表示内容の確認 自分と他人の画像が表示される: fallbackの画像がサイドバーの1つ＋一覧(2人)の2つの計3つ存在する
-     [31mFailure/Error: expect(all('img').size).to eq(3)[0m
+  3) [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 リンクの内容を確認 loginを押すと、ログイン画面に遷移する
+     [31mFailure/Error: click_link login_link[0m
      [31m[0m
-     [31m  expected: 3[0m
-     [31m       got: 4[0m
+     [31mCapybara::Ambiguous:[0m
+     [31m  Ambiguous match, found 2 elements matching visible link "Log in"[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/node/finders.rb:310:in `block in synced_resolve'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/node/base.rb:84:in `synchronize'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/node/finders.rb:301:in `synced_resolve'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/node/finders.rb:60:in `find'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/node/actions.rb:42:in `click_link'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/session.rb:773:in `click_link'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/dsl.rb:52:in `call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.39.2/lib/capybara/dsl.rb:52:in `click_link'[0m
+     [36m# ./spec/system/01_before_login_spec.rb:96:in `block (4 levels) in <main>'[0m
+
+  4) [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしている場合 ヘッダーの表示を確認 log outリンクが表示される: 左上から4番目のリンクが「logout」である
+     [31mFailure/Error: expect(logout_link).to match(/logout/i)[0m
      [31m[0m
-     [31m  (compared using ==)[0m
-     [36m# ./spec/system/02_after_login_spec.rb:268:in `block (4 levels) in <main>'[0m
+     [31m  expected "Log out" to match /logout/i[0m
+     [31m  Diff:[0m[0m
+     [31m  [0m[34m@@ -1 +1 @@[0m
+     [31m  [0m[31m-/logout/i[0m
+     [31m  [0m[32m+"Log out"[0m
+     [31m  [0m[0m
+     [36m# ./spec/system/01_before_login_spec.rb:230:in `block (4 levels) in <main>'[0m
 
-  3) [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿詳細画面のテスト 表示内容の確認 投稿の編集リンクが表示されない
-     [31mFailure/Error: expect(page).not_to have_link 'Edit'[0m
-     [31m  expected not to find visible link "Edit", found 1 match: "Edit"[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:235:in `block (5 levels) in <main>'[0m
-
-  4) [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿詳細画面のテスト 表示内容の確認 投稿の削除リンクが表示されない
-     [31mFailure/Error: expect(page).not_to have_link 'Destroy'[0m
-     [31m  expected not to find visible link "Destroy", found 1 match: "Destroy"[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:238:in `block (5 levels) in <main>'[0m
-
-  5) [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿詳細画面のテスト サイドバーの確認 自分の名前と紹介文は表示されない
-     [31mFailure/Error: expect(page).not_to have_content user.name[0m
-     [31m  expected not to find text "7zjfi1bxu6" in "Bookers\nHome Users Books Log out\nUser Info\nName:b0qw77kckq\nIntroduction: 29kvh429fvotc3di53g5\nプロフィール編集\nNew book\nTitle\nOpinion\nBook detail\n　　　 　　　 7zjfi1bxu6 0fawq x55ppl6fremzatxr82eu 　 　 Edit Destroy\n　　\nb0qw77kckq bxwut qa896zm9s3uzqw2tw929"[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:251:in `block (5 levels) in <main>'[0m
-
-  6) [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿編集画面 遷移できず、投稿一覧画面にリダイレクトされる
+  5) [STEP4] いいねとコメントのテスト 投稿一覧画面のテスト[課題4追加分] いいね作成機能のテスト リダイレクト先が投稿一覧画面になっている
      [31mFailure/Error: expect(current_path).to eq '/books'[0m
      [31m[0m
      [31m  expected: "/books"[0m
-     [31m       got: "/"[0m
+     [31m       got: "/books/1"[0m
      [31m[0m
      [31m  (compared using ==)[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:263:in `block (4 levels) in <main>'[0m
+     [36m# ./spec/system/04_favorite_comment_spec.rb:42:in `block (4 levels) in <main>'[0m
 
-  7) [STEP3] 仕上げのテスト 他人の画面のテスト 他人のユーザ情報編集画面 遷移できず、自分のユーザ詳細画面にリダイレクトされる
+  6) [STEP4] いいねとコメントのテスト 投稿一覧画面のテスト[課題4追加分] いいね削除機能のテスト リダイレクト先が投稿一覧画面になっている
+     [31mFailure/Error: expect(current_path).to eq '/books'[0m
+     [31m[0m
+     [31m  expected: "/books"[0m
+     [31m       got: "/books/2"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/system/04_favorite_comment_spec.rb:55:in `block (4 levels) in <main>'[0m
+
+  7) [STEP4] いいねとコメントのテスト 自分のユーザ詳細画面のテスト[課題4追加分] いいね作成機能のテスト リダイレクト先が自分のユーザ詳細画面になっている
      [31mFailure/Error: expect(current_path).to eq '/users/' + user.id.to_s[0m
      [31m[0m
      [31m  expected: "/users/2"[0m
-     [31m       got: "/users/3/edit"[0m
+     [31m       got: "/books/1"[0m
      [31m[0m
      [31m  (compared using ==)[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:312:in `block (4 levels) in <main>'[0m
+     [36m# ./spec/system/04_favorite_comment_spec.rb:181:in `block (4 levels) in <main>'[0m
 
-  8) [STEP3] 仕上げのテスト グリッドシステムのテスト: container, row, col-md-〇を正しく使えている 投稿詳細画面
-     [31mFailure/Error: is_expected.to have_selector '.container .row .col-md-8.offset-md-1'[0m
-     [31m  expected to find css ".container .row .col-md-8.offset-md-1" but there were no matches[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:345:in `block (3 levels) in <main>'[0m
-
-Finished in 49.14 seconds (files took 1.67 seconds to load)
-[31m199 examples, 8 failures[0m
+Finished in 41.39 seconds (files took 1.49 seconds to load)
+[31m243 examples, 7 failures[0m
 
 Failed examples:
 
-[31mrspec ./spec/system/02_after_login_spec.rb:171[0m [36m# [STEP2] ユーザログイン後のテスト 自分の投稿詳細画面のテスト 投稿成功のテスト 自分の新しい投稿が正しく保存される[0m
-[31mrspec ./spec/system/02_after_login_spec.rb:267[0m [36m# [STEP2] ユーザログイン後のテスト ユーザ一覧画面のテスト 表示内容の確認 自分と他人の画像が表示される: fallbackの画像がサイドバーの1つ＋一覧(2人)の2つの計3つ存在する[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:234[0m [36m# [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿詳細画面のテスト 表示内容の確認 投稿の編集リンクが表示されない[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:237[0m [36m# [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿詳細画面のテスト 表示内容の確認 投稿の削除リンクが表示されない[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:250[0m [36m# [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿詳細画面のテスト サイドバーの確認 自分の名前と紹介文は表示されない[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:261[0m [36m# [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿編集画面 遷移できず、投稿一覧画面にリダイレクトされる[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:310[0m [36m# [STEP3] 仕上げのテスト 他人の画面のテスト 他人のユーザ情報編集画面 遷移できず、自分のユーザ詳細画面にリダイレクトされる[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:342[0m [36m# [STEP3] 仕上げのテスト グリッドシステムのテスト: container, row, col-md-〇を正しく使えている 投稿詳細画面[0m
+[31mrspec ./spec/system/01_before_login_spec.rb:65[0m [36m# [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 表示内容の確認 loginリンクが表示される: 左上から4番目のリンクが「login」である[0m
+[31mrspec ./spec/system/01_before_login_spec.rb:87[0m [36m# [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 リンクの内容を確認 sign upを押すと、新規登録画面に遷移する[0m
+[31mrspec ./spec/system/01_before_login_spec.rb:93[0m [36m# [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 リンクの内容を確認 loginを押すと、ログイン画面に遷移する[0m
+[31mrspec ./spec/system/01_before_login_spec.rb:228[0m [36m# [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしている場合 ヘッダーの表示を確認 log outリンクが表示される: 左上から4番目のリンクが「logout」である[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:40[0m [36m# [STEP4] いいねとコメントのテスト 投稿一覧画面のテスト[課題4追加分] いいね作成機能のテスト リダイレクト先が投稿一覧画面になっている[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:53[0m [36m# [STEP4] いいねとコメントのテスト 投稿一覧画面のテスト[課題4追加分] いいね削除機能のテスト リダイレクト先が投稿一覧画面になっている[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:179[0m [36m# [STEP4] いいねとコメントのテスト 自分のユーザ詳細画面のテスト[課題4追加分] いいね作成機能のテスト リダイレクト先が自分のユーザ詳細画面になっている[0m
 

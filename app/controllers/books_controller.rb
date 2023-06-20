@@ -8,7 +8,8 @@ class BooksController < ApplicationController
       @book_detail = Book.find(params[:id])
       @books = Book.all
       @user = @book_detail.user
-    
+      @book_comment = BookComment.new
+     
  if params[:from_other_user]
       @books = @books.where.not(user: current_user)
  else
@@ -24,6 +25,7 @@ class BooksController < ApplicationController
   def create
     @books = Book.all
    @book = Book.new(book_params)
+   
    if current_user
     @book.user_id = current_user.id
    end
@@ -36,9 +38,9 @@ class BooksController < ApplicationController
   end
 
   def index
-    
     @books = Book.all
   
+    
   end
 
 
@@ -48,7 +50,7 @@ class BooksController < ApplicationController
     if @user != @book.user
       redirect_to books_path
     end
-    
+
   end
 
 
@@ -84,7 +86,7 @@ end
       redirect_to books_path
     end
    end
-   
-    
+
+
 end
 
